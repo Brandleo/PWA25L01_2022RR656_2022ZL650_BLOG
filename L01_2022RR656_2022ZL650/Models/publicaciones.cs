@@ -8,6 +8,6 @@ namespace L01_2022RR656_2022ZL650.Models
         public int publicacionId { get; set; }
         public string titulo { get; set; }
         public string descripcion { get; set; }
-        public int usuarioId { get; set; }
+        public int? usuarioId { get; set; }
     }
 }
