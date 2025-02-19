@@ -85,9 +85,7 @@ namespace L01_2022RR656_2022ZL650.Controllers
 
             if (calificacionActual == null) { return NotFound(); }
 
-            calificacionActual.calificacionId = calificacionModificar.calificacionId;
-            calificacionActual.publicacionId = calificacionModificar.publicacionId;
-            calificacionActual.usuarioId = calificacionModificar.usuarioId;
+            
             calificacionActual.calificacion = calificacionModificar.calificacion;
 
 
@@ -144,7 +142,7 @@ namespace L01_2022RR656_2022ZL650.Controllers
             if (calificacion == null)
             {
 
-                return NotFound(" NO hay calificaciones con el id de la publicacion "+ id);
+                return NotFound(" No hay calificaciones con el id de la publicacion "+ id);
 
             }
 
