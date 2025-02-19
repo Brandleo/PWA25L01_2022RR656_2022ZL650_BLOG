@@ -7,7 +7,7 @@ namespace L01_2022RR656_2022ZL650.Models
 {
     public class calificaciones
     {
-
+        [Key]
         public int calificacionId { get; set; }
 
         public int ? publicacionId { get; set; }
