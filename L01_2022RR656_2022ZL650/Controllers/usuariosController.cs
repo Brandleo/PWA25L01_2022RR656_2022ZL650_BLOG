@@ -82,7 +82,7 @@ namespace L01_2022RR656_2022ZL650.Controllers
         }
         [HttpGet]
         [Route("Buscar por nombre y apellido")]
-        public IActionResult listar4(string nombre, string  apellido)
+        public IActionResult bna(string nombre, string  apellido)
         {
             var p2 = nombre;
             var p1 = apellido;
@@ -94,7 +94,7 @@ namespace L01_2022RR656_2022ZL650.Controllers
         }
         [HttpGet]
         [Route("Buscar por rol")]
-        public IActionResult listar4(string rol)
+        public IActionResult bpr(string rol)
         {
             var p2 = rol;
             var usua = (from l in _blogDBContexto.usuarios
@@ -102,6 +102,30 @@ namespace L01_2022RR656_2022ZL650.Controllers
                         on l.rolId equals ro.rolId
                         where ro.rol == p2 
                         select l).ToList();
+
+            return Ok(usua);
+        }
+        [HttpGet]
+        [Route("Top usuarios por comentario")]
+        public IActionResult obtener(int t)
+        {
+            var usua = (from u in _blogDBContexto.usuarios
+                        join c in _blogDBContexto.comentarios
+                        on u.usuarioId equals c.usuarioId
+                        group c by new
+                        {
+                            u.usuarioId,
+                            u.nombre,
+                            u.apellido
+                        }
+                        into grupo
+                        orderby grupo.Count() descending
+                        select new
+                        {
+                            Nombre = grupo.Key.nombre,
+                            Apellido = grupo.Key.apellido,
+                            Total_Comentarios = grupo.Count(),
+                        }).Take(t).ToList();
 
             return Ok(usua);
         }
