@@ -6,6 +6,6 @@ namespace L01_2022RR656_2022ZL650.Models
     {
         [Key]
         public int rolId { get; set; }
-        public string rol {  get; set; }
+        public string? rol {  get; set; }
     }
 }
