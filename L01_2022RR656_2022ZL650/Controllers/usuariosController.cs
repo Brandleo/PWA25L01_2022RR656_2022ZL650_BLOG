@@ -49,7 +49,6 @@ namespace L01_2022RR656_2022ZL650.Controllers
                                 select u).FirstOrDefault();
             if (UActual == null)
             { return NotFound(); }
-            UActual.rolId = usuariosmodificar.rolId;
             UActual.nombreUsuario = usuariosmodificar.nombreUsuario;
             UActual.clave = usuariosmodificar.clave;
             UActual.nombre = usuariosmodificar.nombre;
